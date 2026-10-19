@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лавандулова Магия - Натурални Продукти</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f6ff;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #6f42c1;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 5px solid #6f42c1;
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        .product-card h3 {
+            margin: 0.5rem 0;
+            color: #4a2880;
+            font-size: 1.5rem;
+        }
+        .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #28a745;
+            margin: 1rem 0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #6f42c1;
+            color: white;
+            text-shadow: none;
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.2s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .btn:hover {
+            background-color: #5a32a3;
+        }
+        .about, .contact {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 3rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        h2 {
+            color: #4a2880;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 0.5rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #4a2880;
+            color: white;
+            margin-top: 4rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Лавандулова Магия</h1>
+        <p>100% натурални продукти от сърцето на българските лавандулови полета</p>
+    </header>
+
+    <div class="container">
+        
+        <h2>Нашите Продукти</h2>
+        <div class="products">
+            <!-- Продукт 1 -->
+            <div class="product-card">
+                <div class="product-icon">💧</div>
+                <h3>Натурална Лавандулова Вода</h3>
+                <p>Идеална за почистване, хидратиране и успокояване на всеки тип кожа. Помага при акне и кожни раздразнения.</p>
+                <div class="price">8.50 лв. <small>(250 мл)</small></div>
+                <button class="btn" onclick="orderProduct('Лавандулова Вода')">Купи Сега</button>
+            </div>
+
+            <!-- Продукт 2 -->
+            <div class="product-card">
+                <div class="product-icon">🌿</div>
+                <h3>Етерично Лавандулово Масло</h3>
+                <p>Чисто, концентрирано масло за ароматерапия, релаксация и спокоен сън. Подходящо за дифузер и масаж.</p>
+                <div class="price">12.00 лв. <small>(10 мл)</small></div>
+                <button class="btn" onclick="orderProduct('Лавандулово Масло')">Купи Сега</button>
+            </div>
+        </div>
+
+        <div class="about">
+            <h2>За Нас</h2>
+            <p>Ние сме мамеен семеен бизнес, посветен на отглеждането на чиста, екологична лавандула. Нашите продукти се произвеждат чрез парна дестилация, без добавени изкуствени аромати, консерванти или химикали. Гарантираме най-високо качество директно от производителя.</p>
+        </div>
+
+        <div class="contact" id="order-form-section">
+            <h2>Бърза Поръчка / Контакти</h2>
+            <p>Попълнете формата по-долу, за да направите поръчка или да ни зададете въпрос. Ще се свържем с вас възможно най-бързо за потвърждение.</p>
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Вашето Име:</label>
+                    <input type="text" id="name" required placeholder="Иван Иванов">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон за връзка:</label>
+                    <input type="tel" id="phone" required placeholder="0888 123 456">
+                </div>
+                <div class="form-group">
+                    <label for="message">Продукт и количество (или съобщение):</label>
+                    <textarea id="message" rows="4" required placeholder="Например: 2 бр. Лавандулова вода и 1 бр. Масло. Адрес за доставка: офис на Еконт..."></textarea>
+                </div>
+                <button type="submit" class="btn">Изпрати Поръчката</button>
+            </form>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Лавандулова Магия. Всички права запазени.</p>
+    </footer>
+
+    <script>
+        function orderProduct(productName) {
+            const messageBox = document.getElementById('message');
+            messageBox.value = "Здравейте, искам да поръчам: " + productName + " (1 бр.). \nАдрес за доставка: ";
+            document.getElementById('order-form-section').scrollIntoView({ behavior: 'smooth' });
+            messageBox.focus();
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const msg = document.getElementById('message').value;
+            
+            alert("Благодарим ви, " + name + "! Поръчката ви е приета успешно. Ще ви се обадим на телефон " + phone + " за потвърждение.");
+            event.target.reset();
+        }
+    </script>
+
+</body>
+</html>
