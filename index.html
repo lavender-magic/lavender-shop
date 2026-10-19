@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Българска Лавандула | Премиум Натурални Продукти</title>
+    <title>Българска Лавандула | Премиум Онлайн Магазин</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
         :root {
@@ -54,6 +54,27 @@
             text-decoration: none;
         }
 
+        .cart-icon-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+            color: var(--lavender-dark);
+            font-weight: 600;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -15px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 11px;
+        }
+
         .promo-banner {
             background-color: var(--lavender-dark);
             color: white;
@@ -69,13 +90,8 @@
             background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.85)), url('https://unsplash.com');
             background-size: cover;
             background-position: center;
-            padding: 100px 20px 8px 20px;
+            padding: 80px 20px 40px 20px;
             text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         .hero h1 {
@@ -85,75 +101,16 @@
             margin-bottom: 20px;
         }
 
-        .hero p {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 30px;
-        }
-
-        .btn-main {
-            background-color: var(--lavender-main);
-            color: white;
-            padding: 15px 35px;
-            border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(125, 107, 145, 0.3);
-            display: inline-block;
-        }
-
-        .btn-main:hover {
-            background-color: var(--lavender-dark);
-            transform: translateY(-2px);
-        }
-
-        .features {
-            max-width: 1200px;
-            margin: 60px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            padding: 0 20px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 30px;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
-        }
-
-        .feature-card h3 {
-            color: var(--lavender-dark);
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-
         .section-title {
             text-align: center;
             font-family: 'Playfair Display', serif;
             font-size: 32px;
             color: var(--lavender-dark);
-            margin: 60px 0 40px 0;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 2px;
-            background-color: var(--lavender-main);
-            margin: 10px auto 0 auto;
+            margin: 40px 0;
         }
 
         .products-grid {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto 60px auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -166,12 +123,10 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
             position: relative;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .badge {
@@ -196,37 +151,11 @@
         .product-info {
             padding: 25px;
             text-align: center;
-        }
-
-        .product-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            color: var(--lavender-dark);
-            margin-bottom: 10px;
-        }
-
-        .product-volume {
-            font-size: 14px;
-            color: #888;
-            margin-bottom: 15px;
-        }
-
-        .product-desc {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 20px;
-            height: 65px;
+            flex-grow: 1;
         }
 
         .price-box {
-            margin-bottom: 20px;
-        }
-
-        .old-price {
-            text-decoration: line-through;
-            color: #aaa;
-            font-size: 16px;
-            margin-right: 10px;
+            margin: 15px 0;
         }
 
         .new-price {
@@ -235,46 +164,49 @@
             font-weight: 700;
         }
 
-        .reviews {
-            background-color: var(--lavender-light);
-            padding: 60px 20px;
-        }
-
-        .reviews-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .review-card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
-        }
-
-        .stars {
-            color: var(--accent-gold);
-            margin-bottom: 10px;
-        }
-
-        .review-author {
-            display: block;
-            margin-top: 15px;
+        .btn-main {
+            background-color: var(--lavender-main);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            font-size: 15px;
             font-weight: 600;
-            font-size: 14px;
-            color: var(--lavender-dark);
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
         }
 
-        .order-section {
-            max-width: 600px;
-            margin: 80px auto;
-            padding: 40px 20px;
+        .btn-main:hover {
+            background-color: var(--lavender-dark);
+        }
+
+        .checkout-container {
+            max-width: 700px;
+            margin: 60px auto;
             background: white;
+            padding: 40px 30px;
             border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+        }
+
+        .cart-summary {
+            background: var(--lavender-light);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .cart-item-list {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .cart-item-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
         }
 
         .form-group {
@@ -285,22 +217,13 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            font-size: 14px;
-            color: var(--lavender-dark);
         }
 
-        .form-group input, .form-group textarea, .form-group select {
+        .form-group input, .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 12px;
             border: 1px solid #DDD;
             border-radius: 8px;
-            font-size: 15px;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            border-color: var(--lavender-main);
         }
 
         .submit-btn {
@@ -313,7 +236,6 @@
             font-size: 18px;
             font-weight: 700;
             cursor: pointer;
-            transition: background 0.3s ease;
         }
 
         .submit-btn:hover {
@@ -324,13 +246,8 @@
             background-color: var(--lavender-dark);
             color: white;
             text-align: center;
-            padding: 30px 20px;
-            font-size: 14px;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 32px; }
-            .section-title { font-size: 26px; }
+            padding: 20px;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -338,25 +255,65 @@
 
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">Лавандулова Магия</a>
-            <a href="#order" class="btn-main" style="padding: 10px 20px; font-size: 14px;">Поръчай Сега</a>
+            <a href="#" class="logo">Българска Лавандула</a>
+            <button class="cart-icon-btn" onclick="scrollToCheckout()">🛒 Количка <span class="cart-count" id="cart-count">0</span></button>
         </div>
     </header>
 
-    <div class="promo-banner">БЕЗПЛАТНА ДОСТАВКА ЗА ПОРЪЧКИ НАД €30</div>
+    <div class="promo-banner">ПРЕМИУМ ЛАВАНДУЛА ОТ БЪЛГАРИЯ С БЪРЗА ДОСТАВКА</div>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1>Премиум лавандулова вода и лавандулово масло от България</h1>
-            <p>Предлагаме 100% чисти, натурални етерични продукти с гарантиран български произход. Директно от сърцето на лавандуловите полета до Вашия дом – за сияйна кожа, здраве и дълбок релакс.</p>
-            <a href="#products" class="btn-main">Разгледай Продукцията</a>
+        <h1>Натурална козметика директно от България</h1>
+        <p>Изберете чисти продукти с гарантиран географски произход за здраве, свежест и релаксация.</p>
+    </section>
+
+    <section id="shop">
+        <h2 class="section-title">Нашите Продукти</h2>
+        <div class="products-grid">
+            
+            <!-- Продукт 1 -->
+            <div class="product-card">
+                <span class="badge">БИО</span>
+                <img src="https://unsplash.com" alt="Лавандулова вода" class="product-img">
+                <div class="product-info">
+                    <h3>Натурална Лавандулова Вода</h3>
+                    <p style="color: #888; font-size:14px; margin-bottom:10px;">Разфасовка: 250 мл</p>
+                    <p style="font-size:14px; color:#555;">Премиум грижа за хидратация на кожата и борба с акнето.</p>
+                    <div class="price-box"><span class="new-price">€4.50</span></div>
+                    <button class="btn-main" onclick="addToCart('Лавандулова Вода (250мл)', 4.50)">Добави в количката</button>
+                </div>
+            </div>
+
+            <!-- Продукт 2 -->
+            <div class="product-card">
+                <span class="badge">100% ЧИСТО</span>
+                <img src="https://unsplash.com" alt="Лавандулово масло" class="product-img">
+                <div class="product-info">
+                    <h3>Етерично Лавандулово Масло</h3>
+                    <p style="color: #888; font-size:14px; margin-bottom:10px;">Разфасовка: 10 мл</p>
+                    <p style="font-size:14px; color:#555;">Концентрирано българско масло за дълбок сън и ароматерапия.</p>
+                    <div class="price-box"><span class="new-price">€6.50</span></div>
+                    <button class="btn-main" onclick="addToCart('Лавандулово Масло (10мл)', 6.50)">Добави в количката</button>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <section class="features">
-        <div class="feature-card">
-            <span style="font-size: 35px; display: block; margin-bottom: 15px;">🇧🇬</span>
-            <h3>Български Произход</h3>
-            <p>Произведени в България – световният лидер в добива на най-качественото лавандулово масло.</p>
+    <!-- СЕКЦИЯ КОЛИЧКА И ПОРЪЧКА -->
+    <section id="checkout" class="checkout-container">
+        <h2 class="section-title" style="margin: 0 0 20px 0;">Твоята Количка & Данни за Доставка</h2>
+        
+        <div class="cart-summary">
+            <h3>Избрани продукти:</h3>
+            <ul class="cart-item-list" id="cart-items">
+                <li style="color: #888;">Количката е празна. Добавете продукти по-горе.</li>
+            </ul>
+            <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 18px;">
+                <span>ОБЩО ЗА ПЛАЩАНЕ:</span>
+                <span id="total-price">€0.00</span>
+            </div>
         </div>
-        <div class="feature-card">
+
+        <!-- ФОРМА, КОЯТО ИЗПРАЩА ПОРЪЧКИТЕ ДО ИМЕЙЛА -->
+        <!-- ЗАМЕНЕТЕ 'tvoiat-email@gmail.com' С ВАШИЯ ИСТИНСКИ ИМЕЙЛ -->
