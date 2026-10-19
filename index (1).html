@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Българска Лавандула | Премиум Онлайн Магазин</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lavender-dark: #4A3E56;
+            --lavender-main: #7D6B91;
+            --lavender-light: #F3EFFF;
+            --accent-gold: #D4AF37;
+            --text-color: #2D2D2D;
+            --bg-white: #FFFFFF;
+            --border-color: #E2DCE7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: #FAF9FB;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--bg-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--lavender-dark);
+            text-decoration: none;
+        }
+
+        .cart-icon-btn {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            color: var(--lavender-dark);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cart-count {
+            background-color: var(--lavender-main);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 12px;
+        }
+
+        .promo-banner {
+            background: linear-gradient(90deg, var(--lavender-dark), #615270);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: 60px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #FFF9F2 0%, #F3EFFF 100%);
+            padding: 100px 20px 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: var(--lavender-dark);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            font-size: 17px;
+            color: #555;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: var(--lavender-dark);
+            margin: 50px 0 30px 0;
+        }
+
+        .products-grid {
+            max-width: 1000px;
+            margin: 0 auto 60px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(74, 62, 86, 0.05);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(125, 107, 145, 0.08);
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: var(--accent-gold);
+            color: white;
+            padding: 6px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 50px;
+            z-index: 10;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 320px;
+            background-color: #FCFAFD;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.03);
+        }
+
+        .product-info {
+            padding: 30px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--lavender-dark);
+            margin-bottom: 8px;
+        }
+
+        .price-box {
+            margin: 15px 0 20px 0;
+        }
+
+        .new-price {
+            color: var(--lavender-dark);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .btn-main {
+            background-color: var(--lavender-main);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .btn-main:hover {
+            background-color: var(--lavender-dark);
+        }
+
+        .checkout-container {
+            max-width: 700px;
+            margin: 60px auto;
+            background: white;
+            padding: 45px 35px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(74, 62, 86, 0.06);
+            border: 1px solid var(--border-color);
+        }
+
+        .cart-summary {
+            background: var(--lavender-light);
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 35px;
+        }
+
+        .cart-item-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .cart-item-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(125, 107, 145, 0.15);
+            font-size: 15px;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #C0392B;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 9px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--lavender-dark);
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 15px;
+            background-color: #FCFAFD;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--lavender-main);
+            background-color: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(125, 107, 145, 0.1);
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        @media(min-width: 480px) {
+            .payment-methods {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .payment-option {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .payment-option input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .payment-option.active {
+            border-color: var(--lavender-main);
+            background-color: var(--lavender-light);
+        }
+
+        .payment-option-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--lavender-dark);
+            display: block;
+            margin-top: 5px;
+        }
+
+        .payment-info-box {
+            background-color: #F9F9FB;
+            border: 1px dashed var(--lavender-main);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-top: 4px;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            font-size: 13px;
+            color: #555;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #27AE60, #219653);
+            color: white;
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(39, 174, 96, 0.25);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 7px 25px rgba(39, 174, 96, 0.35);
+        }
+
+        .submit-btn:disabled {
+            background: #D3CDE0;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* Card Payment Modal Emulation */
+        .card-fields {
+            display: none;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            background: #FDFBFF;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 25px;
+        }
+
+        .card-fields .full-width {
+            grid-column: span 2;
+        }
+
+        footer {
+            background-color: var(--lavender-dark);
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Българска Лавандула</a>
+            <button class="cart-icon-btn" onclick="scrollToCheckout()">🛒 Количка <span class="cart-count" id="cart-count">0</span></button>
+        </div>
+    </header>
+
+    <div class="promo-banner">БЕЗПЛАТНА ДОСТАВКА ЗА ПОРЪЧКИ НАД €30</div>
+
+    <section class="hero">
+        <h1 style="max-width: 900px; margin: 0 auto 20px auto;">Премиум лавандулова вода и масло директно от България</h1>
+        <p>100% натурални етерични продукти, уловили силата на природата, слънчевите лъчи и истинския лавандулов цвят.</p>
+        <a href="#shop" class="btn-main" style="width: auto; padding: 15px 40px; text-decoration: none; display: inline-block;">Към Магазина</a>
+    </section>
+
+    <section id="shop">
+        <h2 class="section-title">Нашите Натурални Продукти</h2>
+        <div class="products-grid">
+            
+            <!-- Продукт 1: Натурална Лавандулова Вода -->
+            <div class="product-card">
+                <span class="badge">100% БИО</span>
+                <div class="image-container">
+                    <!-- Замени 'lavender_water.jpg' с пътя до твоята снимка, ако решиш -->
+                    <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80" alt="Натурална лавандулова вода" class="product-img" id="img-product-1">
+                </div>
+                <div class="product-info">
+                    <h3>Натурална Лавандулова Вода</h3>
+                    <p style="color: #888; font-size:14px; margin-bottom:12px;">Разфасовка: 250 мл</p>
+                    <p style="font-size:14px; color:#555; flex-grow: 1;">Хидратира, тонизира и почиства кожата на лицето в дълбочина. Извлечена чрез традиционна парна дестилация.</p>
+                    <div class="price-box"><span class="new-price">€4.50</span></div>
+                    <button class="btn-main" onclick="addToCart('Лавандулова Вода (250мл)', 4.50)">Добави в количката</button>
+                </div>
+            </div>
+
+            <!-- Продукт 2: Етерично Лавандулово Масло -->
+            <div class="product-card">
+                <span class="badge">ПРЕМИУМ</span>
+                <div class="image-container">
+                    <!-- Замени 'lavender_oil.jpg' с пътя до твоята снимка, ако решиш -->
+                    <img src="https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=600&q=80" alt="Етерично лавандулово масло" class="product-img" id="img-product-2">
+                </div>
+                <div class="product-info">
+                    <h3>Етерично Лавандулово Масло</h3>
+                    <p style="color: #888; font-size:14px; margin-bottom:12px;">Разфасовка: 10 мл</p>
+                    <p style="font-size:14px; color:#555; flex-grow: 1;">Силно концентрирано чисто етерично масло. Идеално за ароматерапия, релаксация, масажи и спокоен дълбок сън.</p>
+                    <div class="price-box"><span class="new-price">€6.50</span></div>
+                    <button class="btn-main" onclick="addToCart('Лавандулово Масло (10мл)', 6.50)">Добави в количката</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ КОЛИЧКА И ИНТЕГРИРАНО ПЛАЩАНЕ -->
+    <section id="checkout" class="checkout-container">
+        <h2 class="section-title" style="margin: 0 0 25px 0; font-size: 28px;">Завършване на поръчката</h2>
+        
+        <div class="cart-summary">
+            <h4 style="color: var(--lavender-dark); margin-bottom: 10px;">Продукти във Вашата количка:</h4>
+            <ul class="cart-item-list" id="cart-items">
+                <li style="color: #777; border-bottom: none;">Количката Ви е празна. Добавете продукти от каталога по-горе.</li>
+            </ul>
+            <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 18px; color: var(--lavender-dark); margin-top: 15px;">
+                <span>ОБЩО СУМА:</span>
+                <span id="total-price">€0.00</span>
+            </div>
+        </div>
+
+        <form action="https://formspree.io/f/sonyarcheva@gmail.com" method="POST" onsubmit="return validateAndSubmit(event)">
+            <!-- Скрити полета за предаване на информацията от количката към имейла -->
+            <input type="hidden" name="Поръчани Продукти" id="hidden-cart-input">
+            <input type="hidden" name="Обща Сума" id="hidden-total-input">
+            <input type="hidden" name="Метод на плащане" id="hidden-payment-input" value="cod">
+
+            <div class="form-group">
+                <label for="client-name">Име и Фамилия на получателя *</label>
+                <input type="text" id="client-name" name="Име" required placeholder="Пример: Анна Георгиева">
+            </div>
+
+            <div class="form-group">
+                <label for="client-phone">Телефон за връзка *</label>
+                <input type="tel" id="client-phone" name="Телефон" required placeholder="Пример: 08XXXXXXXX">
+            </div>
+
+            <div class="form-group">
+                <label for="client-email">Имейл адрес *</label>
+                <input type="email" id="client-email" name="Имейл" required placeholder="Пример: name@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="delivery-address">Адрес за доставка (Офис на Спиди/Еконт или Личен адрес) *</label>
+                <textarea id="delivery-address" name="Адрес за Доставка" rows="3" required placeholder="Град, име на офис на куриер или точен адрес за доставка"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Изберете метод на плащане *</label>
+                <div class="payment-methods">
+                    <div class="payment-option active" id="opt-cod" onclick="selectPaymentMethod('cod')">
+                        <span style="font-size: 20px;">📦</span>
+                        <span class="payment-option-title">Наложен платеж</span>
+                    </div>
+                    <div class="payment-option" id="opt-bank" onclick="selectPaymentMethod('bank')">
+                        <span style="font-size: 20px;">🏦</span>
+                        <span class="payment-option-title">Банков път</span>
+                    </div>
+                    <div class="payment-option" id="opt-card" onclick="selectPaymentMethod('card')">
+                        <span style="font-size: 20px;">💳</span>
+                        <span class="payment-option-title">С карта</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Контейнер за информация при банков превод -->
+            <div class="payment-info-box" id="bank-info-box">
+                <strong>Данни за банков превод:</strong><br>
+                Банка: Примерна Банка АД<br>
+                IBAN: BG99ZZZZ12345678901234<br>
+                BIC: ZZZZBG22<br>
+                Основание: Номер на Вашата поръчка (Вашето Име)<br>
+                <span style="color:#7D6B91; font-size:12px; display:block; margin-top:5px;">* Поръчката ще бъде изпълнена веднага след получаване на превода.</span>
+            </div>
+
+            <!-- Имитиране на полета за плащане с карта (Готови за интеграция с Stripe/Боррика) -->
+            <div class="card-fields" id="card-fields-box">
+                <div class="full-width">
+                    <label style="font-size:12px; font-weight:600;">Номер на картата</label>
+                    <input type="text" placeholder="4000 1234 5678 9010" id="card-num">
+                </div>
+                <div>
+                    <label style="font-size:12px; font-weight:600;">Валидност</label>
+                    <input type="text" placeholder="MM/YY" id="card-exp">
+                </div>
+                <div>
+                    <label style="font-size:12px; font-weight:600;">CVC / CVV</label>
+                    <input type="password" placeholder="123" id="card-cvc">
+                </div>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="newsletter-check" name="Абонамент за Бюлетин" value="Да" checked>
+                <label for="newsletter-check">Желая да се абонирам за безплатния имейл бюлетин и да получавам ексклузивни отстъпки, промоции и новини за българската лавандула.</label>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submit-btn" disabled>ЗАВЪРШИ ПОРЪЧКАТА</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2026 Българска Лавандула. Всички права запазени.</p>
+    </footer>
+
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: name, price: price, quantity: 1 });
+            }
+            updateCartUI();
+            scrollToCheckout();
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalPriceContainer = document.getElementById('total-price');
+            const cartCountContainer = document.getElementById('cart-count');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<li style="color: #777; border-bottom: none;">Количката Ви е празна. Добавете продукти от каталога по-горе.</li>';
+                totalPriceContainer.innerText = '€0.00';
+                cartCountContainer.innerText = '0';
+                submitBtn.disabled = true;
+                return;
+            }
+
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            let totalItems = 0;
+            let cartTextDetails = '';
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                totalItems += item.quantity;
+                cartTextDetails += `${item.name} x${item.quantity} (€${itemTotal.toFixed(2)}), `;
+
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span>${item.name} <strong>x${item.quantity}</strong></span>
+                    <div>
+                        <span style="font-weight:600; margin-right:10px;">€${itemTotal.toFixed(2)}</span>
+                        <button class="remove-btn" onclick="removeFromCart('${item.name}')">❌</button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(li);
+            });
+
+            totalPriceContainer.innerText = `€${total.toFixed(2)}`;
+            cartCountContainer.innerText = totalItems;
+            submitBtn.disabled = false;
+
+            // Записване в скритите полета за изпращане
+            document.getElementById('hidden-cart-input').value = cartTextDetails;
+            document.getElementById('hidden-total-input').value = `€${total.toFixed(2)}`;
+        }
+
+        function selectPaymentMethod(method) {
+            // Премахване на активен клас от всички
+            document.getElementById('opt-cod').classList.remove('active');
+            document.getElementById('opt-bank').classList.remove('active');
+            document.getElementById('opt-card').classList.remove('active');
+            
+            // Скриване на кутиите за информация
+            document.getElementById('bank-info-box').style.display = 'none';
+            document.getElementById('card-fields-box').style.display = 'none';
+
+            // Маркиране на избрания и показване на съответните полета
+            if (method === 'cod') {
+                document.getElementById('opt-cod').classList.add('active');
+                document.getElementById('hidden-payment-input').value = 'Наложен платеж';
+            } else if (method === 'bank') {
+                document.getElementById('opt-bank').classList.add('active');
+                document.getElementById('bank-info-box').style.display = 'block';
+                document.getElementById('hidden-payment-input').value = 'Банков превод';
+            } else if (method === 'card') {
+                document.getElementById('opt-card').classList.add('active');
+                document.getElementById('card-fields-box').style.display = 'grid';
+                document.getElementById('hidden-payment-input').value = 'С кредитна/дебитна карта';
+            }
+        }
+
+        function scrollToCheckout() {
+            document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function validateAndSubmit(event) {
+            const paymentMethod = document.getElementById('hidden-payment-input').value;
+            
+            if (paymentMethod === 'С кредитна/дебитна карта') {
+                const num = document.getElementById('card-num').value;
+                const exp = document.getElementById('card-exp').value;
+                const cvc = document.getElementById('card-cvc').value;
+                
+                if(!num || !exp || !cvc) {
+                    alert('Моля, попълнете всички полета за плащане с банкова карта.');
+                    event.preventDefault();
+                    return false;
+                }
+            }
+            
+            alert('Благодарим Ви! Вашата поръчка се обработва и информацията е изпратена на имейла.');
+            return true;
+        }
+    </script>
+</body>
+</html>
